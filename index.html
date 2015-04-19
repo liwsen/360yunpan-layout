@@ -1,0 +1,736 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网盘</title>
+<link rel="stylesheet" type="text/css" href="css/amujz_cssframe.css" />
+<link rel="stylesheet" type="text/css" href="css/wangpan.css" />
+<script language="javascript" type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/amujz_cssframe.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery.lazyload.js"></script>
+<script language="javascript" type="text/javascript" src="js/wangpan.js"></script>
+<!--[if IE]>
+<script type="text/javascript" src="js/html5.js"></script>
+<![endif]-->
+
+<script language="javascript" type="text/javascript" src="js/jquery.contextmenu.r2.packed.js"></script>
+<script>
+//文件操作
+function file_operations(id,format){
+	alert("ID："+id+"\n格式："+format)
+}
+//新建文件夹
+function newfolder(name){
+	//已存在文件夹，返回false
+	return false;
+	
+/**********
+ *可以使用，返回True
+ *返回True之前需要执行truebefore(id,href)函数
+  *********
+	id = 1;//新添文件夹的id
+	href = "http://www.amujz.com/";//双击文件夹转跳链接地址
+	truebefore(id,href);
+	return true;
+*/
+}
+</script>
+</head>
+
+<body class="WangPan">
+<section class="LeftPanel">
+	<ul class="TypeList">
+    	<li class="current"><a href="#"><i class="icon icon_all"></i><span>全部文件</span></a></li>
+    	<li><a href="#"><i class="icon icon_saft"></i><span>文件保险箱</span></a></li>
+    	<li><a href="#"><i class="icon icon_share"></i><span>分享的文件</span></a></li>
+    	<li><a href="#"><i class="icon icon_recycle"></i><span>回收站</span></a></li>
+    </ul>
+</section>
+<header class="MainHeader">
+	<div class="Title">
+    	<a href="#">全部页面</a> > 我的文档 > 
+    </div>
+    <div class="BtnList">
+    	<div class="right">
+        	<div class="sort">
+            	排序：
+                <ul>
+                	<li><a href="#" class="asc">名称</a></li>
+                	<li><a href="#" class="asc">大小</a></li>
+                	<li><a href="#" class="desc">最近上传</a></li>
+                	<li><a href="#" class="desc">修改日期</a></li>
+                </ul>
+            </div>
+            <div class="display_mode">
+            	<span class="tbText" title="切换到列表视图">列表视图</span>
+            	<span class="tbPic" title="切换到大图视图">大图视图</span>
+            </div>
+        </div>
+        <span class="y_btn_back">返回</span>
+        <span class="y_btn y_btn_blue" data-alert="uploadfile"><i class="icon icon2 icon_upload"></i>上传</span>
+        <span class="y_btn y_btn_gray" id="newfolder"><i class="icon icon2 icon_new"></i>新建文件夹</span>
+        <span class="y_btn y_btn_gray"><i class="icon icon2 icon_offline"></i>离线下载</span>
+        <span class="y_btn y_btn_gray" data-alert="deletetip">删除</span>
+        <div class="Clear"></div>
+    </div>
+</header>
+<section class="MainPanel">
+	<div id="filelist" class="FileList">
+        <ul class="list_pic">
+            <li class="listtitle">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name">
+                    <span class="text">文件名</span>
+                </div>
+                <div class="column column_size">大小</div>
+                <div class="column column_time">修改日期</div>
+            </li>
+            
+            
+            
+            
+            <li class="" id="888" data-format="默认文件">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="默认文件
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">默认文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="folder" id="999" data-href="http://www.baidu.com">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="默认文件夹file
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">默认文件夹</span>
+                </div>
+            </li>
+            
+            <li class="folder file_pic">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="我的图集file file_pic
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">我的图集</span>
+                </div>
+            </li>
+            
+            <li class="folder file_pic">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="我的图集我的图集我的图集file file_pic
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">我的图集我的图集我的图集</span>
+                </div>
+            </li>
+            
+            <li class="folder file_bookmarks">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="我的书签file file_bookmarks
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">我的书签</span>
+                </div>
+            </li>
+            
+            <li class="folder file_yun">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="我的云文件file file_yun
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">我的云文件</span>
+                </div>
+            </li>
+            
+            <li class="folder file_text">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="我的电子书file file_text
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">我的电子书</span>
+                </div>
+            </li>
+            
+            <li class="folder file_phone">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="我的手机文件file file_phone
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">我的手机文件</span>
+                </div>
+            </li>
+            
+            <li class="folder file_other">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="其他文件file file_type
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">其他文件</span>
+                </div>
+            </li>
+            
+            <li class="folder file_music">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="音乐文件file file_music
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">音乐文件</span>
+                </div>
+            </li>
+            
+            <li class="folder file_movie">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="影视资源file file_movie
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">影视资源</span>
+                </div>
+            </li>
+            
+            <li class="office office_doc">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="Word文档office office_doc
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">Word文档</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="office office_pdf">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="PDF文档office office_pdf
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">PDF文档</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="office office_ppt">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="PPT文档office office_ppt
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">PPT文档</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="office office_txt">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="文本文档office office_txt
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">文本文档</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="office office_excel">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="EXCEL文档office office_excel
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">EXCEL文档</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="package package_7z">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="压缩包office package_7z
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">压缩包</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="package package_cab">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="压缩包office package_cab
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">压缩包</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="package package_iso">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="压缩包office package_iso
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">压缩包</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="package package_rar">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="压缩包office package_rar
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">压缩包</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="package package_zip">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="压缩包office package_zip
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">压缩包</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="images images_ai">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="图像文件images images_ai
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">图像文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="images images_bmp">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="图像文件images images_bmp
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">图像文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="images images_cdr">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="图像文件images images_cdr
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">图像文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="images images_gif">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="图像文件images images_gif
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">图像文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="images images_ico">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="图像文件images images_ico
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">图像文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="images images_jpeg">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="图像文件images images_jpeg
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">图像文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="images images_jpg">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="图像文件images images_jpg
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">图像文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="images images_png">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="图像文件images images_png
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">图像文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="images images_psd">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="图像文件images images_psd
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">图像文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="images images_webp">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="图像文件images images_webp
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">图像文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="file_torrent">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="TORRENT文件 file_torrent
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">TORRENT文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="file_apk">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="APK文件 file_apk
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">APK文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_ape">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_ape
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_avi">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_avi
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_flv">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_flv
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_mkv">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_mkv
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_mov">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_mov
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_mp3">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_mp3
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_mp4">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_mp4
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_mpeg">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_mpeg
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_mpg">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_mpg
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_rm">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_rm
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_rmvb">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_rmvb
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_swf">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_swf
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_wav">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_wav
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_webm">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_webm
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_wma">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media video_wma
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+            
+            <li class="media media_wmv">
+                <div class="column column_checkbox"><label></label></div>
+                <div class="column column_name" title="媒体文件 media media_wmv
+创建时间: 2013-03-16 00:11">
+                    <span class="icon"></span>
+                    <span class="text">媒体文件</span>
+                </div>
+                <div class="column column_size">24.7KB</div>
+                <div class="column column_time">2013-03-16 00:11</div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+
+<!-- //文件上传窗口######################################################################## -->
+
+<div class="alertBox" id="uploadfile">
+	<dl>
+    	<dt>
+        	<span><i class="close" data-alert="uploadfile"></i></span>
+            上传文件到云盘
+        </dt>
+        <dd>
+        	<div class="Tips">当前浏览器可升级为“云加速上传”，支持文件秒传、断点续传、大文件上传</div>
+            <div class="alertBody">
+                <form>
+                	<div class="FileTop">
+                    	<div class="FileBtns">
+                            <span class="FileBtn y_btn y_btn_blue">
+                                <input title="请选择要上传的文件" type="file" multiple="">
+                                添加文件
+                            </span>
+                            <div class="Files">
+                                <span class="FileBtn y_btn">
+                                    <input title="请选择要上传的文件" type="file" multiple="">
+                                    添加文件
+                                </span>
+                                <span class="FileBtn y_btn">
+                                    <input title="请选择要上传的文件夹" type="file" webkitdirectory="" multiple="">
+                                    添加文件夹
+                                </span>
+                            </div>
+                        </div>
+                        到：全部文件
+                    </div>
+                    <div class="UploadListBox">
+                    	<div class="DragTip">
+                        	<h1>试试将电脑里的文件拖拽到此上传</h1>
+                            <p>（您的浏览器支持此拖拽功能）</p>
+                        </div>
+                    </div>
+                	<div class="FileBottom">
+                        <input type="submit" value=" 完 成 " />
+                    </div>
+                </form>
+            </div>
+        </dd>
+    </dl>
+</div>
+
+<!-- //操作提示信息######################################################################## -->
+
+<div class="alertBox" id="samefile" style="width:350px; height:200px;">
+	<dl>
+    	<dt>
+        	<span><i class="close" data-alert="samefile"></i></span>
+            操作提示
+        </dt>
+        <dd>
+        	<div class="BoxTip">已存在相同文件名</div>
+            <div class="alertBtn"><input type="button" value="确定" class="But_Blue" data-alert="samefile" onclick="$('#newfoldername').select();" /></div>
+        </dd>
+    </dl>
+</div>
+
+<!-- //删除提示信息######################################################################## -->
+
+<div class="alertBox" id="deletetip" style="width:350px; height:200px;">
+	<dl>
+    	<dt>
+        	<span><i class="close" data-alert="deletetip"></i></span>
+            确定删除
+        </dt>
+        <dd>
+        	<div class="BoxTip">
+            	<p>确定要删除这<strong>2</strong>项？</p>
+                <p>删除后可在回收站还原。</p>
+            </div>
+            <div class="alertBtn"><input type="button" value="确定" class="But_Blue" /><input type="button" value="取消" data-alert="deletetip" /></div>
+        </dd>
+    </dl>
+</div>
+
+<!-- //右键菜单的源######################################################################## -->
+
+<div class="contextMenu" id="mycontextmenu">
+    <ul>
+        <li id="open">打开</li>
+        <li id="download">下载</li>
+        <li id="delete">删除</li>
+        <li id="rename">重命名</li>
+        <li id="move">移动</li>
+        <li id="moveinfile">转入文件保险箱</li>
+        <li id="link">分享文件</li>
+    </ul>
+</div>
+
+<script>
+//右键菜单
+function fun_contextMenu(obj){
+	obj.contextMenu('mycontextmenu',{
+		bindings: 
+		{
+			'open': function(t) {
+			alert('ID:'+t.id+'\n链接地址：'+$("#"+t.id).data("href")+'\n文件格式：'+$("#"+t.id).data("format"));
+		},
+			'download': function(t) {
+			alert('ID:'+t.id+'\n链接地址：'+$("#"+t.id).data("href")+'\n文件格式：'+$("#"+t.id).data("format"));
+		},
+			'rename': function(t) {
+			alert('ID:'+t.id+'\n链接地址：'+$("#"+t.id).data("href")+'\n文件格式：'+$("#"+t.id).data("format"));
+		},
+			'move': function(t) {
+			alert('ID:'+t.id+'\n链接地址：'+$("#"+t.id).data("href")+'\n文件格式：'+$("#"+t.id).data("format"));
+		},
+			'moveinfile': function(t) {
+			alert('ID:'+t.id+'\n链接地址：'+$("#"+t.id).data("href")+'\n文件格式：'+$("#"+t.id).data("format"));
+		},
+			'link': function(t) {
+			alert('ID:'+t.id+'\n链接地址：'+$("#"+t.id).data("href")+'\n文件格式：'+$("#"+t.id).data("format"));
+		}
+	}});
+}
+</script>
+</body>
+</html>
